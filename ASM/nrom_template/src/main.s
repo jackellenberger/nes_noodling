@@ -122,5 +122,6 @@ initial_palette:
 
 ; Include the CHR ROM data
 .segment "CHR"
-  .incbin "obj/nes/bggfx.chr"
-  .incbin "obj/nes/spritegfx.chr"
+   .incbin "tilesets/sprites.chr"
+;  .incbin "obj/nes/bggfx.chr"
+;  .incbin "obj/nes/spritegfx.chr"

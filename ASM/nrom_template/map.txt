@@ -1,0 +1,99 @@
+Modules list:
+-------------
+nrom.o:
+    INESHDR           Offs=000000  Size=000008  Align=00001  Fill=0000
+    VECTORS           Offs=000000  Size=000006  Align=00001  Fill=0000
+init.o:
+    CODE              Offs=000000  Size=000037  Align=00001  Fill=0000
+main.o:
+    CODE              Offs=000037  Size=000052  Align=00001  Fill=0000
+    RODATA            Offs=000000  Size=000020  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000000  Size=000006  Align=00001  Fill=0000
+    CHR               Offs=000000  Size=002000  Align=00001  Fill=0000
+bg.o:
+    CODE              Offs=000089  Size=00006D  Align=00001  Fill=0000
+player.o:
+    CODE              Offs=0000F6  Size=00013E  Align=00001  Fill=0000
+    ZEROPAGE          Offs=000006  Size=000007  Align=00001  Fill=0000
+pads.o:
+    CODE              Offs=000234  Size=00004C  Align=00001  Fill=0000
+ppuclear.o:
+    CODE              Offs=000280  Size=000045  Align=00001  Fill=0000
+
+
+Segment list:
+-------------
+Name                   Start     End    Size  Align
+----------------------------------------------------
+CHR                   000000  001FFF  002000  00001
+INESHDR               000000  000007  000008  00001
+ZEROPAGE              000010  00001C  00000D  00001
+CODE                  00C000  00C2C4  0002C5  00001
+RODATA                00C300  00C31F  000020  00001
+VECTORS               00FFFA  00FFFF  000006  00001
+
+
+Exports list by name:
+---------------------
+OAM                       000200 REA    cur_keys                  000012 RLZ    
+draw_bg                   00C089 RLA    draw_player_sprite        00C1BC RLA    
+init_player               00C0F6 RLA    irq_handler               00C03A RLA    
+main                      00C03B RLA    move_player               00C109 RLA    
+new_keys                  000014 RLZ    nmi_handler               00C037 RLA    
+oam_used                  000011 RLZ    ppu_clear_nt              00C280 RLA    
+ppu_clear_oam             00C2A2 RLA    ppu_screen_on             00C2B2 RLA    
+read_pads                 00C234 RLA    reset_handler             00C000 RLA    
+
+
+
+Exports list by value:
+----------------------
+oam_used                  000011 RLZ    cur_keys                  000012 RLZ    
+new_keys                  000014 RLZ    OAM                       000200 REA    
+reset_handler             00C000 RLA    nmi_handler               00C037 RLA    
+irq_handler               00C03A RLA    main                      00C03B RLA    
+draw_bg                   00C089 RLA    init_player               00C0F6 RLA    
+move_player               00C109 RLA    draw_player_sprite        00C1BC RLA    
+read_pads                 00C234 RLA    ppu_clear_nt              00C280 RLA    
+ppu_clear_oam             00C2A2 RLA    ppu_screen_on             00C2B2 RLA    
+
+
+
+Imports list:
+-------------
+OAM (main.o):
+    ppuclear.o                src/ppuclear.s(12)
+    player.o                  src/global.inc(9)
+cur_keys (main.o):
+    pads.o                    src/pads.s(17)
+    player.o                  src/global.inc(10)
+draw_bg (bg.o):
+    main.o                    src/global.inc(13)
+draw_player_sprite (player.o):
+    main.o                    src/global.inc(16)
+init_player (player.o):
+    main.o                    src/global.inc(16)
+irq_handler (main.o):
+    nrom.o                    src/nrom.s(1)
+main (main.o):
+    init.o                    src/global.inc(8)
+move_player (player.o):
+    main.o                    src/global.inc(16)
+new_keys (main.o):
+    pads.o                    src/pads.s(17)
+nmi_handler (main.o):
+    nrom.o                    src/nrom.s(1)
+oam_used (main.o):
+    player.o                  src/global.inc(10)
+ppu_clear_nt (ppuclear.o):
+    bg.o                      src/global.inc(19)
+ppu_clear_oam (ppuclear.o):
+    main.o                    src/global.inc(19)
+    init.o                    src/global.inc(19)
+ppu_screen_on (ppuclear.o):
+    main.o                    src/global.inc(19)
+read_pads (pads.o):
+    main.o                    src/global.inc(22)
+reset_handler (init.o):
+    nrom.o                    src/nrom.s(1)
+
