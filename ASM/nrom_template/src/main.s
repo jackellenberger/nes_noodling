@@ -117,11 +117,9 @@ copypalloop:
 
 .segment "RODATA"
 initial_palette:
-  .byt $22,$18,$28,$38,$0F,$06,$16,$26,$0F,$08,$19,$2A,$0F,$02,$12,$22
-  .byt $22,$08,$16,$37,$0F,$06,$16,$26,$0F,$0A,$1A,$2A,$0F,$02,$12,$22
+  .incbin "tilesets/sprites.pal"
+  .incbin "tilesets/sprites_bg.pal"
 
 ; Include the CHR ROM data
 .segment "CHR"
    .incbin "tilesets/sprites.chr"
-;  .incbin "obj/nes/bggfx.chr"
-;  .incbin "obj/nes/spritegfx.chr"
